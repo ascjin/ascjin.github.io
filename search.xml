@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>HEXO-admin安装和使用 汉化版</title>
+      <link href="/2023/02/03/4629ae96.html"/>
+      <url>/2023/02/03/4629ae96.html</url>
+      
+        <content type="html"><![CDATA[<p>1.安装</p><p>进入 hexo 源文件目录，执行命令：</p><p>npm install –save hexo-admin<br>hexo server -d<br>open <a href="http://localhost:4000/admin/">http://localhost:4000/admin/</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>mybatis plus 条件构造器queryWrapper学习</title>
       <link href="/2023/02/03/10930.html"/>
       <url>/2023/02/03/10930.html</url>

@@ -22,13 +22,13 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1675412421166">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1675420343842">
     
-    <link rel="stylesheet" href="/css/style.css?v=1675412421166">
+    <link rel="stylesheet" href="/css/style.css?v=1675420343842">
 
     
         
-            <link rel="stylesheet" href="/custom.css?v=1675412421166">
+            <link rel="stylesheet" href="/custom.css?v=1675420343842">
         
     
 <meta name="generator" content="Hexo 5.4.1"></head>
@@ -53,9 +53,9 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>1</div>
-        <div><span>标签</span>2</div>
-        <div><span>分类</span>1</div>
+        <div><span>文章</span>2</div>
+        <div><span>标签</span>3</div>
+        <div><span>分类</span>2</div>
     </div>
     <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
         
@@ -110,7 +110,7 @@
 	<div class="nexmoe-widget nexmoe-social">
 		<a
 			class="mdui-ripple"
-			href="https://github.com/nexmoe/"
+			href="https://github.com/ascjin/"
 			target="_blank"
 			mdui-tooltip="{content: 'GitHub'}"
 			style="
@@ -147,6 +147,13 @@
         </li>
 
         
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/教程/">教程</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
       </ul>
 
     </div>
@@ -158,12 +165,12 @@
         
   <div class="nexmoe-widget-wrap">
     <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
-      <a href="/tags/mybatis-plus/" style="font-size: 10px;">mybatis plus</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a>
+      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/mybatis-plus/" style="font-size: 10px;">mybatis plus</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a>
     </div>
     
       <script>
         var maxTagcloud = parseInt(17);
-        var tags_length = parseInt(2);
+        var tags_length = parseInt(3);
         var tags_arr = [];
         for(var i = 0; i < tags_length; i++){
           tags_arr.push(i);
@@ -181,12 +188,54 @@
 
     
         
+        <!-- 一言 -->
+<div class="nexmoe-widget-wrap">
+  <h3 class="nexmoe-widget-title">
+    一言
+  </h3>
+  <div class="nexmoe-widget">
+    <ul class="hitokoto-box">
+      <li id="hitokoto_text_parent" class="hitokoto-text" hitokotoCategory="">
+        <a href="#" id="hitokoto_text">
+          
+        </a>
+        <a href="#" id="hitokoto_error_text" style="display: none;">
+          
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  let hitokotoText = document.getElementById('hitokoto_text')
+  let hitokotoErroText = document.getElementById('hitokoto_error_text')
+  let hitokotoCategory = document.getElementById('hitokoto_text_parent').getAttribute('hitokotoCategory')
+  window.onload = function () {
+    let url = 'https://v1.hitokoto.cn'
+    if (hitokotoCategory) {
+      url += '?c=' + hitokotoCategory
+    }
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        hitokotoText.innerText = "「 " + data.hitokoto + " 」 from " + data.from
+        hitokotoText.href = 'https://hitokoto.cn/?uuid=' + data.uuid
+      })
+      .catch((reason) => {
+        console.error(11, reason)
+        hitokotoText.style.display = 'none'
+        hitokotoErroText.style.display = 'block'
+      })
+  }
+</script>
+    
         
         
   <div class="nexmoe-widget-wrap">
     <h3 class="nexmoe-widget-title">文章归档</h3>
     <div class="nexmoe-widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -199,6 +248,10 @@
     <h3 class="nexmoe-widget-title">最新文章</h3>
     <div class="nexmoe-widget">
       <ul>
+        
+          <li>
+            <a href="/2023/02/03/4629ae96.html">HEXO-admin安装和使用 汉化版</a>
+          </li>
         
           <li>
             <a href="/2023/02/03/10930.html">mybatis plus 条件构造器queryWrapper学习</a>
@@ -242,6 +295,42 @@
     <div id="nexmoe-content">
         <div class="nexmoe-primary">
             <section class="nexmoe-posts">
+    
+    <div class="nexmoe-post">
+        <a href="/2023/02/03/4629ae96.html">
+            
+                <div class="nexmoe-post-cover mdui-ripple"> 
+                    <img src="https://i.dawnlab.me/b5a7e61560facdd5b8aa9683fce147d7.png" alt="HEXO-admin安装和使用 汉化版" loading="lazy">
+                    <h1>HEXO-admin安装和使用 汉化版</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2023年02月03日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+        
+        
+    <a><i class="nexmoefont icon-areachart"></i>约26字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要1分钟</a>
+
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+        <article>
+            <p>1.安装</p>
+<p>进入 hexo 源文件目录，执行命令：</p>
+<p>npm install –save hexo-admin<br>hexo server -d<br>open <a target="_blank" rel="noopener" href="http://localhost:4000/admin/">http://localhost:4000/admin/</a></p>
+
+        </article>
+    </div>
     
     <div class="nexmoe-post">
         <a href="/2023/02/03/10930.html">
@@ -321,7 +410,7 @@
 
  
 
-<script async src="/js/app.js?v=1675412421167"></script>
+<script async src="/js/app.js?v=1675420343844"></script>
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
 
