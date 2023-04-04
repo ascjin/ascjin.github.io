@@ -19,25 +19,25 @@
 <meta property="og:site_name" content="ASC的学习空间">
 <meta property="og:description" content="一、背景针对老项目，去年做了许多降本增效的事情，其中发现最多的就是接口耗时过长的问题，就集中搞了一次接口性能优化。本文将给小伙伴们分享一下接口优化的通用方案。  二、接口优化方案总结 1.批处理批量思想：批量操作数据库，这个很好理解，我们在循环插入场景的接口中，可以在批处理执行完成后一次性插入或更新数据库，避免多次 IO。 &#x2F;&#x2F;for循环单笔入库 list.stream().forEatch(">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://ascjin.github.io/%5Cimages%5Czongjie.png">
-<meta property="og:image" content="https://ascjin.github.io/%5Cimages%5Cyibu1.png">
+<meta property="og:image" content="https://ascjin.github.io/images/zongjie.png">
+<meta property="og:image" content="https://ascjin.github.io/images/yibu1.png">
 <meta property="og:image" content="https://ascjin.github.io/%5Cimages%5Cgupiao.png">
 <meta property="og:image" content="https://ascjin.github.io/%5Cimages%5Cchuanlian.png">
 <meta property="og:image" content="https://ascjin.github.io/%5Cimages%5Csuoyin.png">
 <meta property="article:published_time" content="2023-04-03T07:08:00.000Z">
-<meta property="article:modified_time" content="2023-04-04T07:46:07.581Z">
+<meta property="article:modified_time" content="2023-04-04T09:14:57.522Z">
 <meta property="article:author" content="ASC.JIN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://ascjin.github.io/%5Cimages%5Czongjie.png">
+<meta name="twitter:image" content="https://ascjin.github.io/images/zongjie.png">
     
 <link rel="stylesheet" href="/lib/fancybox/fancybox.css">
 <link rel="stylesheet" href="/lib/justifiedGallery/justifiedGallery.min.css">
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1680599094565">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1680599707421">
     
-    <link rel="stylesheet" href="/css/style.css?v=1680599094565">
+    <link rel="stylesheet" href="/css/style.css?v=1680599707421">
     
 <meta name="generator" content="Hexo 5.4.1"></head>
 
@@ -301,7 +301,7 @@
       <span id="more"></span>
 
 <p>一、背景<br>针对老项目，去年做了许多降本增效的事情，其中发现最多的就是接口耗时过长的问题，就集中搞了一次接口性能优化。本文将给小伙伴们分享一下接口优化的通用方案。</p>
-<p><img data-fancybox="gallery" src="/%5Cimages%5Czongjie.png" alt="uploaded!" data-caption="uploaded!" loading="lazy"></p>
+<p><img data-fancybox="gallery" src="/images/zongjie.png" alt="uploaded!" data-caption="uploaded!" loading="lazy"></p>
 <p>二、接口优化方案总结</p>
 <p>1.批处理<br>批量思想：批量操作数据库，这个很好理解，我们在循环插入场景的接口中，可以在批处理执行完成后一次性插入或更新数据库，避免多次 IO。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//for循环单笔入库</span>
@@ -313,7 +313,7 @@ list<span class="token punctuation">.</span><span class="token function">stream<
 <span class="token function">batchInsert</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>2.异步处理<br>异步思想：针对耗时比较长且不是结果必须的逻辑，我们可以考虑放到异步执行，这样能降低接口耗时。<br>例如一个理财的申购接口，入账和写入申购文件是同步执行的，因为是 T+1 交易，后面这两个逻辑其实不是结果必须的，我们并不需要关注它的实时结果，所以我们考虑把入账和写入申购文件改为异步处理。如图所示：</p>
-<p><img data-fancybox="gallery" src="/%5Cimages%5Cyibu1.png" alt="uploaded!" data-caption="uploaded!" loading="lazy"></p>
+<p><img data-fancybox="gallery" src="/images/yibu1.png" alt="uploaded!" data-caption="uploaded!" loading="lazy"></p>
 <p>至于异步的实现方式，可以用线程池，也可以用消息队列，还可以用一些调度任务框架。</p>
 <p>3.空间换时间<br>一个很好理解的空间换时间的例子是合理使用缓存，针对一些频繁使用且不频繁变更的数据，可以提前缓存起来，需要时直接查缓存，避免频繁地查询数据库或者重复计算。</p>
 <p>需要注意的事，这里用了合理二字，因为空间换时间也是一把双刃剑，需要综合考虑你的使用场景，毕竟缓存带来的数据一致性问题也挺令人头疼。</p>
@@ -403,7 +403,6 @@ list<span class="token punctuation">.</span><span class="token function">stream<
     <span class="token function">share</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
  <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
   </article>
 
   
@@ -492,10 +491,10 @@ list<span class="token punctuation">.</span><span class="token function">stream<
 
  
 
-<script async src="/js/app.js?v=1680599094573"></script>
+<script async src="/js/app.js?v=1680599707429"></script>
 
 
-	<script async src="/js/search.js?v=1680599094573"></script>
+	<script async src="/js/search.js?v=1680599707429"></script>
 
 
 <script>
